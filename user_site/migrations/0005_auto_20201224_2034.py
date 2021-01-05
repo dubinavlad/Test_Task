@@ -6,20 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user_site', '0004_auto_20201224_1947'),
+        ("user_site", "0004_auto_20201224_1947"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='team',
-            name='image',
+            model_name="team",
+            name="image",
         ),
         migrations.AddField(
-            model_name='team',
-            name='image',
+            model_name="team",
+            name="image",
             field=models.URLField(default=None),
         ),
         migrations.DeleteModel(
-            name='Image',
+            name="Image",
         ),
     ]

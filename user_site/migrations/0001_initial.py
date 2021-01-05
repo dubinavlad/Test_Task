@@ -7,21 +7,31 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Team',
+            name="Team",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('tag', models.CharField(max_length=50)),
-                ('rating', models.IntegerField()),
-                ('wins', models.IntegerField()),
-                ('losses', models.IntegerField()),
-                ('last_match', models.DateField()),
-                ('logo', models.ImageField(blank=True, upload_to='media/%Y/%m/%d')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("tag", models.CharField(max_length=50)),
+                ("rating", models.IntegerField()),
+                ("wins", models.IntegerField()),
+                ("losses", models.IntegerField()),
+                ("last_match", models.DateField()),
+                (
+                    "logo",
+                    models.ImageField(blank=True, upload_to="media/%Y/%m/%d"),
+                ),
             ],
         ),
     ]

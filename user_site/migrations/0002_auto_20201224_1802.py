@@ -7,30 +7,50 @@ import versatileimagefield.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user_site', '0001_initial'),
+        ("user_site", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Image',
+            name="Image",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('image', versatileimagefield.fields.VersatileImageField(upload_to='images/', verbose_name='Image')),
-                ('image_ppoi', versatileimagefield.fields.PPOIField(default='0.5x0.5', editable=False, max_length=20)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                (
+                    "image",
+                    versatileimagefield.fields.VersatileImageField(
+                        upload_to="images/", verbose_name="Image"
+                    ),
+                ),
+                (
+                    "image_ppoi",
+                    versatileimagefield.fields.PPOIField(
+                        default="0.5x0.5", editable=False, max_length=20
+                    ),
+                ),
             ],
         ),
         migrations.AlterModelOptions(
-            name='team',
-            options={'ordering': ['-name']},
+            name="team",
+            options={"ordering": ["-name"]},
         ),
         migrations.RemoveField(
-            model_name='team',
-            name='logo',
+            model_name="team",
+            name="logo",
         ),
         migrations.AddField(
-            model_name='team',
-            name='image',
-            field=models.ManyToManyField(related_name='products', to='user_site.Image'),
+            model_name="team",
+            name="image",
+            field=models.ManyToManyField(
+                related_name="products", to="user_site.Image"
+            ),
         ),
     ]

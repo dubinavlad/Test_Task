@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user_site', '0007_auto_20201224_2037'),
+        ("user_site", "0007_auto_20201224_2037"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='team',
-            name='last_match',
+            model_name="team",
+            name="last_match",
         ),
         migrations.AddField(
-            model_name='team',
-            name='last_match_time',
+            model_name="team",
+            name="last_match_time",
             field=models.IntegerField(default=0),
         ),
     ]

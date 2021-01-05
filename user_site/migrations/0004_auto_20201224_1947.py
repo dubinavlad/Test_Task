@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user_site', '0003_auto_20201224_1814'),
+        ("user_site", "0003_auto_20201224_1814"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='team',
-            name='image',
-            field=models.ManyToManyField(to='user_site.Image'),
+            model_name="team",
+            name="image",
+            field=models.ManyToManyField(to="user_site.Image"),
         ),
     ]
