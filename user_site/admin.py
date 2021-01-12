@@ -1,9 +1,16 @@
 from . import models
-from django.contrib import admin, messages
+from django.contrib import admin
+from django.utils.safestring import mark_safe
 
 
 @admin.register(models.Team)
 class TeamAdmin(admin.ModelAdmin):
+    def image_tag(self, obj):
+        return mark_safe(
+            '<img src="%s" width="150" height="150" />' % (obj.logo)
+        )
+
+    image_tag.short_description = "Logo"
     list_display = (
         "id",
         "name",

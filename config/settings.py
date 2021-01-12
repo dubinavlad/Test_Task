@@ -33,12 +33,10 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -93,16 +91,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 
-# 'default': env.db()
-
-DATABASES = {
-    "default": parse_db_connection_string(
-        config(
-            "DATABASE_URI",
-            default="postgres://rating:rating@localhost:5432/Dota",
-        )
-    )
-}
+DATABASES = {"default": env.db()}
 
 
 AUTH_PASSWORD_VALIDATORS = [

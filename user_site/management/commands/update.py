@@ -9,7 +9,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         all_teams = requests.get("https://api.opendota.com/api/teams")
         all_teams = all_teams.json()
-
+        create = 0
+        update = 0
         for item in all_teams:
 
             timestamp = item["last_match_time"]
@@ -20,7 +21,7 @@ class Command(BaseCommand):
                     "logo_url"
                 ] = "http://127.0.0.1:8000/img/media/placeholder.png"
 
-            Team.objects.update_or_create(
+            create_update_count = Team.objects.update_or_create(
                 opendota_team_id=item["team_id"],
                 defaults={
                     "name": item["name"],
@@ -28,8 +29,14 @@ class Command(BaseCommand):
                     "rating": item["rating"],
                     "wins": item["wins"],
                     "losses": item["losses"],
-                    "last_match_time": last_match_time.strftime("%Y-%m-%d"),
+                    "last_match_time": last_match_time,
                     "logo": item["logo_url"],
                 },
             )
-            logging.info("Data add is successful!!!")
+            if create_update_count[1] == True:
+                create += 1
+            else:
+                update += 1
+            logging.info(
+                "{} Teams updated and {} created.".format(create, update)
+            )

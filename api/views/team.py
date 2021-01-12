@@ -11,5 +11,5 @@ from rest_framework.response import Response
 
 class TeamView(viewsets.ModelViewSet):
 
-    queryset = Team.objects.all().order_by("wins")
+    queryset = Team.objects.all()
     serializer_class = TeamSerializer
