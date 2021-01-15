@@ -21,7 +21,7 @@ class Command(BaseCommand):
                     "logo_url"
                 ] = "http://127.0.0.1:8000/img/media/placeholder.png"
 
-            create_update_count = Team.objects.update_or_create(
+            created = Team.objects.update_or_create(
                 opendota_team_id=item["team_id"],
                 defaults={
                     "name": item["name"],
@@ -33,10 +33,10 @@ class Command(BaseCommand):
                     "logo": item["logo_url"],
                 },
             )
-            if create_update_count[1] == True:
+            if created[1]:
                 create += 1
             else:
                 update += 1
             logging.info(
-                "{} Teams updated and {} created.".format(create, update)
+                "{} Teams updated and {} created.".format(update,create)
             )
