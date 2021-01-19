@@ -21,7 +21,7 @@ class Command(BaseCommand):
                     "logo_url"
                 ] = "http://127.0.0.1:8000/img/media/placeholder.png"
 
-            created= (Team.objects.update_or_create(
+            _,created= Team.objects.update_or_create(
                 opendota_team_id=item["team_id"],
                 defaults={
                     "name": item["name"],
@@ -32,7 +32,7 @@ class Command(BaseCommand):
                     "last_match_time": last_match_time,
                     "logo": item["logo_url"],
                 },
-            ))[1]
+            )
 
             if created:
                 create += 1
